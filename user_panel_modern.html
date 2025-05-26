@@ -687,13 +687,16 @@
                 <div class="logo-symbol">P</div>
                 <div class="brand-name">ParkSmart Pro</div>
             </div>
-            <div class="welcome-title">Welcome, John Richardson!</div>
+            <!-- EJS Template for Dynamic User Welcome -->
+            <div class="welcome-title">Welcome <%= typeof user !== 'undefined' ? user.username : 'User' %>!</div>
         </div>
 
-        <!-- Success Message (Show conditionally) -->
-        <div class="success-alert" id="successMessage" style="display: none;">
-            ✅ Vehicle parked successfully!
-        </div>
+        <!-- Success Message (EJS Template Conditional) -->
+        <% if (typeof successMessage !== 'undefined' && successMessage) { %>
+            <div class="success-alert">
+                ✅ <%= successMessage %>
+            </div>
+        <% } %>
 
         <!-- Dashboard Grid -->
         <div class="dashboard-grid">
@@ -708,43 +711,45 @@
                     <div class="info-cell">
                         <div class="info-label">Username</div>
                         <div class="info-value">
-                            <span>john.richardson</span>
+                            <span><%= typeof user !== 'undefined' ? user.username : 'N/A' %></span>
                             <span style="color: #4caf50;">●</span>
                         </div>
                     </div>
                     <div class="info-cell">
                         <div class="info-label">Email</div>
-                        <div class="info-value">j.richardson@parksmart.com</div>
+                        <div class="info-value"><%= typeof user !== 'undefined' ? user.email : 'N/A' %></div>
                     </div>
                     <div class="info-cell">
                         <div class="info-label">Mobile</div>
-                        <div class="info-value">+1 (555) 987-6543</div>
+                        <div class="info-value"><%= typeof user !== 'undefined' ? user.mobile : 'N/A' %></div>
                     </div>
                     <div class="info-cell">
                         <div class="info-label">Employee ID</div>
                         <div class="info-value">
-                            <span>EMP-2024-001</span>
+                            <span><%= typeof user !== 'undefined' ? user.employeeId : 'N/A' %></span>
                             <span style="color: #ff6b9d;">👤</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Vehicle Status (Show if vehicle is parked) -->
-                <div class="vehicle-status" id="vehicleStatus">
-                    <div class="vehicle-content">
-                        <div class="card-header" style="margin-bottom: 20px;">
-                            <div class="card-icon" style="background: linear-gradient(135deg, #4fc3f7, #29b6f6);">🚗</div>
-                            <div class="card-title" style="color: #4fc3f7;">Your Parked Vehicle</div>
-                        </div>
-                        <div class="info-cell">
-                            <div class="info-label">Vehicle Number</div>
-                            <div class="info-value">
-                                <span>EXEC-2024-VIP</span>
-                                <span style="color: #4fc3f7;">🅿️</span>
+                <!-- Vehicle Status (EJS Template Conditional) -->
+                <% if (typeof user !== 'undefined' && user.vehicleNo) { %>
+                    <div class="vehicle-status">
+                        <div class="vehicle-content">
+                            <div class="card-header" style="margin-bottom: 20px;">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #4fc3f7, #29b6f6);">🚗</div>
+                                <div class="card-title" style="color: #4fc3f7;">Your Parked Vehicle</div>
+                            </div>
+                            <div class="info-cell">
+                                <div class="info-label">Vehicle Number</div>
+                                <div class="info-value">
+                                    <span><%= user.vehicleNo %></span>
+                                    <span style="color: #4fc3f7;">🅿️</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <% } %>
             </div>
 
             <!-- Park Your Car Card -->
@@ -775,24 +780,16 @@
             </div>
         </div>
 
-        <!-- Navigation Links -->
+        <!-- Navigation Links (EJS Template Conditional) -->
         <div class="nav-links">
-            <a href="/dashboard" class="nav-link">🔙 Back to Dashboard</a>
+            <% if (typeof user !== 'undefined' && user.role === 'admin') { %>
+                <a href="/dashboard" class="nav-link">🔙 Back to Dashboard</a>
+            <% } %>
             <a href="/logout" class="nav-link">🚪 Logout</a>
         </div>
     </div>
 
     <script>
-        // Enhanced form interaction
-        document.getElementById('parkingForm').addEventListener('submit', function(e) {
-            // Show success message simulation (remove this in actual implementation)
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'block';
-                // Scroll to top to show the message
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 500);
-        });
-
         // Dynamic background effects
         function createFloatingParticles() {
             const container = document.querySelector('.bg-effects');
