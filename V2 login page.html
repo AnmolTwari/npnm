@@ -307,24 +307,28 @@
           </div>
           <% } %>
 
-        <form id="loginForm" method="POST" action="/login">
-              <div class="input-group">
-                <input type="text" id="username" name="username" placeholder="Roll / Enrollment No / EMP Code" required>
-              </div>
+        <form id="loginForm" class="login-form">
+            <div class="form-group">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" class="form-input" placeholder="Enter your username" required="">
+            </div>
 
-              <div class="input-group">
-                <input type="password" id="password" name="password" placeholder="Password" required>
-                <span class="password-toggle" onclick="togglePassword()">👁️</span>
-              </div>
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <div class="password-container">
+                    <input type="password" id="password" class="form-input" placeholder="Enter your password" required="">
+                    <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">👁️</button>
+                </div>
+            </div>
 
-              <button type="submit" class="login-btn">Login 🗝️</button>
+            <div class="forgot-password">
+                <a href="http://127.0.0.1:5500/M%20login.html#" id="forgotPassword">Forgot password?</a>
+            </div>
 
-              <div class="action-links">
-                <a href="#" class="forgot-password" onclick="forgotPassword(event)">Forgot Password</a>
-                <a href="/register" class="register-link">Register</a>
-              </div>
-
-              <div id="loginMessage" class="login-message"></div>
+            <button type="submit" class="login-button" id="loginBtn">
+                <span id="loginText">Login</span>
+                <div class="spinner" id="spinner"></div>
+            </button>
         </form>
 
 
