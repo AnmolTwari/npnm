@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0031)http://127.0.0.1:5500/V4.1.html -->
+<!-- saved from url=(0077)http://127.0.0.1:5500/Executive%20Dashboard%20-%20ParkSmart%20Pro%20test.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,12 +19,124 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #46b9f5 0%, #4652f5 100%);
+      background: linear-gradient(135deg, #46d5f5 0%, #3f4cff 100%);
       color: #333;
       line-height: 1.6;
       min-height: 100vh;
       overflow-x: hidden;
     }
+    /* old
+    old
+    old */
+
+    /* Responsive */
+@media (max-width: 700px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .executive-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .executive-title {
+    text-align: center;
+    order: 3;
+  }
+
+  .status-indicator {
+    justify-content: center;
+  }
+}
+.modal {
+  display: none; position: fixed; z-index: 9999;
+  left: 0; top: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); overflow: auto;
+}
+.modal-content {
+  background: #fff; margin: 10% auto; padding: 20px;
+  width: 80%; max-width: 700px; border-radius: 8px;
+}
+.close {
+  float: right; font-size: 24px; cursor: pointer;
+}
+.reservation-details {
+  margin-top: 20px;
+}
+
+.reservation-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: #f0f8ff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#alertSystem {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.popup-alert {
+  position: absolute;
+  top: 30px; /* Pushes alert down from the top */
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px 25px;
+  min-width: 300px;
+  max-width: 90%;
+  font-family: sans-serif;
+  text-align: center;
+  z-index: 10000;
+  pointer-events: auto;
+  animation: fade-in 0.3s ease-in-out;
+  display: none;
+}
+
+
+.popup-header {
+  font-weight: 600;
+  font-size: 1.2em;
+  margin-bottom: 50px;
+}
+
+.popup-message {
+  font-size: 1em;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-10px);
+  transition: all 0.3s ease-in-out;
+}
+
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+
+
+    /* old
+    old
+    old */
 
     /* Enhanced container */
     .main-container {
@@ -44,7 +156,7 @@
       text-align: center;
       margin-bottom: 40px;
       padding: 30px;
-      background-color: #007BFF;
+      background-color: #007bffc2;
       border-radius: 10px;
       color: #FFFFFF;
     }
@@ -57,11 +169,12 @@
 
     .status-indicator {
       font-size: 1rem;
-      color: #28A745;
+      color: #4ade80;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      font-weight: 700;
     }
 
     .status-dot {
@@ -175,11 +288,13 @@
     .form-input {
       padding: 12px 15px;
       border: 1px solid #CED4DA;
-      border-radius: 8px;
+      border-radius: 20px;
       font-size: 1rem;
       background-color: #FFFFFF;
       color: #333;
       transition: all 0.3s ease;
+      margin-bottom: 10px;
+      max-width: 80%;
     }
 
     .form-input:focus {
@@ -271,11 +386,24 @@
       padding: 30px;
       background-color: #FFFFFF;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
       display: flex;
       flex-direction: row;
       align-items: center;
       gap: 30px;
+    }
+
+    .contact-card2 {
+      max-width: 100%;
+    margin: 50px 0;
+    padding-inline: 101px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    display: flex
+;
+    flex-direction: row;
+    align-items: center;
+    gap: 0px
     }
 
     .contact-card h2 {
@@ -284,13 +412,27 @@
       font-weight: 700;
     }
 
+    .contact-card2 h2 {
+      margin-bottom: 25px;
+      color: #007BFF;
+      font-weight: 700;
+      margin-left: 10%;
+    }
+
+ 
+
     .contact-card1 h2 {
       margin-bottom: 25px;
       font-size: 20px;
       color: #012245;
       font-weight: 100;
       margin-top: -30px;
+    
     }
+
+    
+
+    
 
     .contact-form {
       flex: 1;
@@ -301,13 +443,20 @@
     }
 
     .park img {
-      max-width: 600px;
+      max-width: 650px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .imagebrand img{
+      max-width: 650px;
       height: auto;
       border-radius: 10px;
     }
 
     /* Enhanced footer */
     footer {
+      border-top: 1px solid #000000;
       padding: 40px 20px;
       text-align: center;
       color: #FFFFFF;
@@ -325,31 +474,80 @@
       gap: 30px;
       margin-bottom: 30px;
       text-align: left;
+      margin-left: 110px;
     }
 
     .footer-section h4 {
       font-size: 1.2rem;
       margin-bottom: 15px;
-      color: #28A745;
+      color: #007BFF;
+      font-weight: 700;
+    }
+
+    .footer-section1 h4 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: #007BFF;
       font-weight: 700;
     }
 
     .footer-section p, .footer-section a {
       margin: 8px 0;
-      color: #DEE2E6;
+      color: #333333;
       transition: color 0.3s ease;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .footer-section1 p, .footer-section1 a {
+      margin: 8px 0;
+      color: #333333;
+      transition: color 0.3s ease;
+      font-weight: 600;
+      text-decoration: none;
     }
 
     .footer-section a:hover {
-      color: #28A745;
+      color: #007BFF;
       text-decoration: none;
     }
 
     .footer-bottom {
-      border-top: 1px solid #444;
+      border-top: 1px solid #000000;
       padding-top: 20px;
       margin-top: 30px;
+      margin-inline: 90px;
     }
+
+    p {
+    margin-top: 0;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    color: #7C7C7C;  
+    font-weight: 500;
+    }
+
+    .longtext {
+    margin-top: 0;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    color: #7C7C7C;  
+    font-weight: 600;
+    max-width: 80%;
+    margin-left: 10%;
+    }
+
+
+    a {
+    color: #007BFF;
+    text-decoration: none;
+}
+    a :hover{
+      color: #007BFF
+      transform: translateY(15px);
+    }
+
+
 
     /* Responsive design */
     @media (max-width: 768px) {
@@ -382,23 +580,31 @@
         max-width: 100%;
       }
     }
+
+    .blank{
+
+      color: #ffffff;
+    }
+
+   
   </style>
 </head>
 
 <body>
   <!-- Enhanced Bootstrap Header -->
+  <!-- Enhanced Bootstrap Header -->
   <nav class="navbar navbar-expand-lg navbar-dark" style="background: rgba(0,0,0,0.3); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1);">
     <div class="container-fluid">
       <a class="navbar-brand d-flex align-items-center" href="http://127.0.0.1:5500/V4.1.html#" style="color: #fff;">
-        <span class="fs-4 fw-bold">🚗 ParkSmart Pro</span>
+        <img src="aaaa.png" alt="Parksy Logo" style="height: 40px;">
       </a>
       <div class="ms-auto text-light">
-        <strong style="color: #4ade80;">Welcome, John Richardson!</strong>
+        <strong style="color: #4ade80;">Welcome, <%= username %>!</strong>
       </div>
     </div>
   </nav>
 
-  <div class="alert-system" id="alertSystem"></div>
+  <div class="alertSystem" id="alertSystem"></div>
 
   <div class="main-container">
     <!-- Enhanced Executive Header -->
@@ -427,17 +633,17 @@
           <div class="info-cell">
             <div class="info-label">Employee ID</div>
             <div class="info-value">
-              <span>john.richardson</span>
+              <span><%= employeeId %></span>
               <span style="color: #4ade80;">●</span>
             </div>
           </div>
           <div class="info-cell">
             <div class="info-label">Corporate Email</div>
-            <div class="info-value">[email protected]</div>
+            <div class="info-value"><%= email %></div>
           </div>
           <div class="info-cell">
             <div class="info-label">Direct Line</div>
-            <div class="info-value">[phone protected]</div>
+            <div class="info-value"><%= mobile %></div>
           </div>
           <div class="info-cell">
             <div class="info-label">Department</div>
@@ -458,7 +664,7 @@
             <div class="info-cell">
               <div class="info-label">Vehicle Registration</div>
               <div class="info-value">
-                <span>EXEC-2024-VIP</span>
+                <span><%= vehicleNo %></span>
                 <span style="color: #4ade80;">🅿️</span>
               </div>
             </div>
@@ -467,17 +673,25 @@
 
         <!-- Enhanced Reservation Slot Details -->
         <div id="reservationDetailsContainer" class="reservation-details">
+          <% if (bookedSlot) { %>
           <div class="reservation-card">
             <h3>🚗 Reserved Parking Details</h3>
-            <p><strong>Parking Area:</strong> Executive Zone A</p>
-            <p><strong>Slot Number:</strong> E-001</p>
-            <p><strong>Reservation Time:</strong> Active</p>
+            <p><strong>Parking Area:</strong> <%= bookedSlot.areaName %></p>
+            <p><strong>Slot Number:</strong><%= bookedSlot.slotNumber %></p>
+            <p><strong>Reservation Time:</strong>
+              <%= bookedSlot.bookingTime ? bookedSlot.bookingTime.toLocaleString() : 'N/A' %>
+            </p>
 
             <form id="releaseForm" style="margin-top: 15px;">
               <input type="hidden" name="vehicleNo" value="EXEC-2024-VIP">
               <button type="submit" class="btn" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #fff;">❌ Release Slot</button>
             </form>
           </div>
+          <% } else { %>
+          <div class="reservation-card">
+            <p>No active parking reservation.</p>
+          </div>
+          <% } %>
         </div>
       </div>
 
@@ -498,10 +712,10 @@
               <label class="form-label">Select Parking Area</label>
               <select id="parkingAreaSelect" class="form-input" required="">
                 <option value="" disabled="" selected="">-- Select Parking Area --</option>
-                <option value="Area 1">Executive Zone A</option>
-                <option value="Area 2">Executive Zone B</option>
-                <option value="Area 3">VIP Premium</option>
-                <option value="Area 4">Corporate Plaza</option>
+                <option value="Area 1">Parking Area 1</option>
+                <option value="Area 2">Parking Area 2</option>
+                <option value="Area 3">Parking Area 3</option>
+                <option value="Area 4">Parking Area 4</option>
               </select>
             </div>
 
@@ -536,6 +750,21 @@
       <a href="http://127.0.0.1:5500/V4.1.html#" class="nav-link"><span>🚪</span> Logout</a>
     </div>
 
+    <!-- User Status Modal -->
+  <div id="statusModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModalBtn">&times;</span>
+      <div id="modalBody">Loading status...</div>
+    </div>
+  </div>
+
+    <section>
+      <div class="blank">
+        <div>.</div>
+        <div>.</div>
+      </div>
+    </section>
+
     <!-- Enhanced Contact Us Card -->
     <div class="contact-card">
       <div class="park">
@@ -556,7 +785,7 @@
             <input type="email" class="form-input" placeholder="Your Email" required="">
           </div>
           <div class="form-group">
-            <textarea class="form-input" placeholder="Your Message" rows="4" required=""></textarea>
+            <textarea class="form-input" placeholder="Your Message" rows="4" required="" style="height: 237px;"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Send Message</button>
         </form>
@@ -564,13 +793,27 @@
       </div>
     </div>
 
+ <!-- New Branding Section -->
+    <div class="contact-card2">
+
+      <div class="contact-form">
+        <h2>Why Choose Parksy?</h2>
+        <div class="longtext">
+          Experience seamless parking management with Parksy, your ultimate solution for efficient, secure, and smart parking. Our cutting-edge technology ensures executives like you save time, reduce stress, and enjoy a hassle-free parking experience. With real-time slot availability, automated reservations, and premium access to exclusive zones, Parksy empowers you to focus on what matters most—your work. Join thousands of satisfied users who trust Parksy to revolutionize their daily commute.</div>
+      </div>
+
+      <div class="imagebrand">
+        <img src="ChatGPT_Image_Jun_20__2025__03_59_59_PM-removebg-preview.png" alt="Contact Support Image">
+      </div>
+    </div>
+
     <!-- Enhanced Footer -->
     <footer>
       <div class="footer-content">
         <div class="footer-grid">
-          <div class="footer-section">
-            <h4>About ParkSmart Pro</h4>
-            <p>ParkSmart Pro is your intelligent parking management solution, designed to streamline executive parking operations with cutting-edge technology.</p>
+          <div class="footer-section1">
+            <h4>About Us </h4>
+            <p>Parksy is your intelligent parking management solution, designed to streamline executive parking operations with cutting-edge technology.</p>
             <div class="icon-group">
               <span>📱</span> <span>💻</span> <span>📡</span> <span>🔗</span>
             </div>
@@ -597,9 +840,12 @@
             <p><a href="http://127.0.0.1:5500/V4.1.html#">Press</a></p>
           </div>
         </div>
-        <div class="footer-bottom">
-          <p>© 2025 ParkSmart Pro. All rights reserved.</p>
-          <p><a href="http://127.0.0.1:5500/V4.1.html#">Privacy Policy</a> | <a href="http://127.0.0.1:5500/V4.1.html#">Terms of Service</a> | <a href="http://127.0.0.1:5500/V4.1.html#">Cookie Policy</a></p>
+        <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center;">
+          <p>© <%= new Date().getFullYear() %> Parksy. All rights reserved.</p>
+          <div class="tc">
+            <p><a href="http://127.0.0.1:5500/V4.1.html#">Privacy Policy</a> | <a href="http://127.0.0.1:5500/V4.1.html#">Terms of Service</a> | <a href="http://127.0.0.1:5500/V4.1.html#">Cookie Policy</a></p>
+          </div>
+          
         </div>
       </div>
     </footer>
@@ -612,43 +858,425 @@
       <div id="modalBody">Loading status...</div>
     </div>
   </div>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
+
+
+  <script>
+  // Modal elements
+  const modal = document.getElementById('successModal');
+  const closeModal = document.getElementById('closeModal');
+
+  // Contact Form
+  const contactForm = document.querySelector('.contact-form form');
+
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = contactForm.querySelector('input[type="text"]').value.trim();
+    const email = contactForm.querySelector('input[type="email"]').value.trim();
+    const message = contactForm.querySelector('textarea').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!email.match(emailPattern)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    modal.style.display = 'flex';
+    document.body.classList.add('modal-open'); // Disable scrolling
+    contactForm.reset();
+  });
+
+  // Close modal on click
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-open'); // Enable scrolling
+  });
+
+  // Close modal if clicked outside
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      document.body.classList.remove('modal-open'); // Enable scrolling
+    }
+  });
 </script>
+
+
+<script>
+    // Video Playback Control
+    const video = document.getElementById('customVideo');
+    const playButton = document.getElementById('playButton');
+    const wrapper = document.getElementById('videoWrapper');
+
+    wrapper.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        playButton.style.display = 'none';
+      } else {
+        video.pause();
+        playButton.style.display = 'block';
+      }
+    });
+
+    video.addEventListener('play', () => {
+      playButton.style.display = 'none';
+    });
+
+    video.addEventListener('pause', () => {
+      playButton.style.display = 'block';
+    });
+
+    window.addEventListener('load', () => {
+      playButton.style.display = video.paused ? 'block' : 'none';
+    });
+
+    // Testimonial Slider
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".testimonial-slide");
+    const dots = document.querySelectorAll(".dot");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        dots[i].classList.remove("active");
+      });
+      slides[index].classList.add("active");
+      dots[index].classList.add("active");
+      currentSlide = index;
+    }
+
+    function goToSlide(index) {
+      showSlide(index);
+    }
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }, 5000);
+
+    // Contact Form Submission
+    document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      if (name && email && message) {
+        alert('Thank you for your message! We\'ll get back to you soon.');
+        this.reset();
+      } else {
+        alert('Please fill in all fields.');
+      }
+    });
+
+    document.querySelectorAll('.contact-item').forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px)';
+        this.style.transition = 'transform 0.3s ease';
+      });
+      item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
+    });
+
+    // Pricing Button Interactions
+    document.querySelectorAll('.order-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const planName = this.closest('.pricing-card').querySelector('.plan-name').textContent;
+        alert(`You selected the ${planName} plan! Redirecting to checkout...`);
+      });
+      btn.addEventListener('mouseenter', function() {
+        this.style.boxShadow = '0 0 30px rgba(74, 144, 226, 0.6)';
+      });
+      btn.addEventListener('mouseleave', function() {
+        this.style.boxShadow = '';
+      });
+    });
+  </script>
+
+  <script>
+  // Make this available globally
+  function showAlert(message, type = 'success') {
+    const alertSystem = document.getElementById('alertSystem');
+    const alert = document.createElement('div');
+    alert.className = 'popup-alert';
+    alert.innerHTML = `
+      <div class="popup-header">
+        ${type === 'success' ? '✅ Success' : '❌ Error'}
+      </div>
+      <div class="popup-message">${message}</div>
+    `;
+    alertSystem.appendChild(alert);
+
+    setTimeout(() => {
+      alert.classList.add('fade-out');
+      setTimeout(() => alert.remove(), 300);
+    }, 3000);
+  }
+
+  // Now wrap the rest in DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', () => {
+    // can call showAlert() here too
+    showAlert('Welcome to ParkSmart Pro Executive Dashboard');
+  });
+
+
+// Fetch and show all available slots (sorted)
+async function fetchAvailableSlots() {
+  try {
+    const response = await fetch('/available-slots');
+    if (!response.ok) throw new Error('Failed to fetch slots');
+    const slots = await response.json();
+
+    const slotSelect = document.getElementById('slotSelect');
+    slotSelect.innerHTML = `<option value="" disabled selected>-- Select a Slot --</option>`;
+
+    const availableSlots = slots.filter(slot => !slot.occupied);
+    availableSlots.sort((a, b) => Number(a.slotNumber) - Number(b.slotNumber));
+
+    availableSlots.forEach(slot => {
+      const option = document.createElement('option');
+      option.value = slot._id;
+      option.textContent = `Area: ${slot.areaName} - Slot No: ${slot.slotNumber}`;
+      slotSelect.appendChild(option);
+    });
+
+    if (availableSlots.length === 0) {
+      slotSelect.innerHTML = `<option disabled>No slots available</option>`;
+    }
+  } catch (err) {
+    console.error(err);
+    showAlert('Error loading slots', 'error');
+  }
+}
+
+// Handle form submit for booking
+document.getElementById('parkingForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const loader = document.getElementById('parkingLoader');
+  const vehicleNo = this.vehicleNo.value.trim();
+  const slotId = this.slotSelect.value;
+
+  if (!vehicleNo || !slotId) {
+    showAlert('Please enter vehicle number and select slot', 'error');
+    return;
+  }
+
+  loader.classList.add('active');
+
+  try {
+    const response = await fetch('/book-slot', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ vehicleNo, slotId })
+    });
+
+    const data = await response.json();
+    loader.classList.remove('active');
+
+    if (response.ok) {
+      showAlert(`Slot ${data.slotNumber} booked for ${vehicleNo} in ${data.areaName}`);
+      this.reset();
+      fetchAvailableSlots();
+
+      const now = new Date().toLocaleString();
+      document.getElementById('reservationDetailsContainer').innerHTML = `
+        <div class="reservation-card">
+          <h3>✅ Parking Confirmed</h3>
+          <p><strong>🕒 Parked At:</strong> ${now}</p>
+          <p><strong>🚗 Vehicle Number:</strong> ${vehicleNo}</p>
+          <p><strong>📍 Area:</strong> ${data.areaName}</p>
+          <p><strong>🔢 Slot Number:</strong> ${data.slotNumber}</p>
+        </div>
+      `;
+    } else {
+      showAlert(data.error || 'Booking failed', 'error');
+    }
+  } catch (error) {
+    loader.classList.remove('active');
+    showAlert('Server error during booking', 'error');
+  }
+});
+
+// Slot filtering by parking area (with sort)
+document.getElementById('parkingAreaSelect').addEventListener('change', async function () {
+  const selectedArea = this.value;
+  const slotSelect = document.getElementById('slotSelect');
+  slotSelect.innerHTML = '<option value="" disabled selected>-- Loading slots... --</option>';
+
+  try {
+    const response = await fetch('/available-slots');
+    const slots = await response.json();
+    const filteredSlots = slots.filter(slot => !slot.occupied && slot.areaName === selectedArea);
+    filteredSlots.sort((a, b) => Number(a.slotNumber) - Number(b.slotNumber));
+
+    if (filteredSlots.length === 0) {
+      slotSelect.innerHTML = '<option disabled>No available slots in this area</option>';
+      return;
+    }
+
+    slotSelect.innerHTML = '<option value="" disabled selected>-- Select a Slot --</option>';
+    filteredSlots.forEach(slot => {
+      const option = document.createElement('option');
+      option.value = slot._id;
+      option.textContent = `Slot ${slot.slotNumber}`;
+      slotSelect.appendChild(option);
+    });
+  } catch (error) {
+    console.error(error);
+    slotSelect.innerHTML = '<option disabled>Error loading slots</option>';
+  }
+});
+
+// Release slot logic
+const releaseForm = document.getElementById('releaseForm');
+if (releaseForm) {
+  releaseForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const vehicleNo = releaseForm.vehicleNo.value.trim();
+
+    if (!vehicleNo) {
+      showAlert('Vehicle number is missing.', 'error');
+      return;
+    }
+
+    try {
+      const res = await fetch('/release-slot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ vehicleNo })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        showAlert(data.message, 'success');
+        document.getElementById('reservationDetailsContainer').innerHTML = '';
+        releaseForm.reset();
+        fetchAvailableSlots();
+      } else {
+        showAlert(data.message || 'Release failed.', 'error');
+      }
+    } catch (error) {
+      showAlert('Server error during release', 'error');
+      console.error('Release error:', error);
+    }
+  });
+}
+
+// Slot status modal
+const checkStatusBtn = document.getElementById("checkStatusBtn");
+const modal = document.getElementById("statusModal");
+const modalBody = document.getElementById("modalBody");
+const closeModalBtn = document.getElementById("closeModalBtn");
+
+checkStatusBtn.addEventListener("click", async () => {
+  modal.style.display = "block";
+  modalBody.innerHTML = "Loading...";
+
+  try {
+    const res = await fetch("/user-status");
+    const html = await res.text();
+    modalBody.innerHTML = html;
+  } catch (err) {
+    modalBody.innerHTML = "<p style='color:red;'>Failed to load status.</p>";
+  }
+});
+
+closeModalBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+window.addEventListener("click", (e) => {
+  if (e.target === modal) modal.style.display = "none";
+});
+
+// Nav link handler
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function (e) {
+    if (this.textContent.trim().includes('Logout')) {
+      e.preventDefault();
+      if (confirm('Are you sure you want to logout?')) {
+        showAlert('Logging out...');
+        setTimeout(() => window.location.href = '/login', 1000);
+      }
+    } else {
+      e.preventDefault();
+      showAlert(`Navigating to ${this.textContent.trim()}`);
+    }
+  });
+});
+
+// Input border reset
+document.querySelectorAll('.form-input').forEach(input => {
+  input.addEventListener('input', function () {
+    this.style.borderColor = 'rgba(102, 126, 234, 0.2)';
+  });
+});
+
+// Keyboard navigation in forms
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' && e.target.classList.contains('form-input')) {
+    const form = e.target.closest('form');
+    if (form) {
+      const inputs = Array.from(form.querySelectorAll('.form-input'));
+      const currentIndex = inputs.indexOf(e.target);
+
+      if (currentIndex < inputs.length - 1) {
+        inputs[currentIndex + 1].focus();
+      } else {
+        form.dispatchEvent(new Event('submit'));
+      }
+    }
+  }
+});
+
+// Direct booking from card
+async function bookSlot(slotId) {
+  const vehicleNo = prompt("🚗 Enter your vehicle number (e.g., MH12AB1234):");
+  if (!vehicleNo) {
+    showAlert("❌ Booking cancelled.", 'error');
+    return;
+  }
+
+  try {
+    const res = await fetch("/book-slot", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ slotId, vehicleNo }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      showAlert("✅ Slot booked successfully!<br><br>🪪 Vehicle No: " + vehicleNo + "<br>📍 Slot: " + data.slotNumber + "<br>🅿️ Area: " + data.areaName, 'success');
+      setTimeout(() => window.location.reload(), 1500);
+    } else {
+      showAlert("❌ Booking failed: " + data.error, 'error');
+    }
+  } catch (error) {
+    showAlert("🚨 Server error. Try again later.", 'error');
+    console.error("Booking error:", error);
+  }
+}
+
+// Initial setup
+document.addEventListener('DOMContentLoaded', () => {
+  fetchAvailableSlots();
+
+  const profileLoader = document.getElementById('profileLoader');
+  profileLoader.classList.add('active');
+  setTimeout(() => {
+    profileLoader.classList.remove('active');
+    showAlert('Welcome to ParkSmart Pro Executive Dashboard');
+  }, 2000);
+});
+
+
+  </script>
 
 </body></html>
